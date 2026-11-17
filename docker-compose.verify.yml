@@ -1,0 +1,20 @@
+# Phase 8 verification stack (profile `verify`).
+# Never starts on a plain `docker compose up` — always opt in with
+#   docker compose -f docker-compose.yml -f docker-compose.verify.yml --profile verify up -d
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    environment: [PUID=1000, PGID=1000, TZ=UTC]
+    ports: ["7878:7878"]
+    volumes: ["radarr-config:/config"]
+    profiles: [verify]
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    environment: [PUID=1000, PGID=1000, TZ=UTC]
+    ports: ["8989:8989"]
+    volumes: ["sonarr-config:/config"]
+    profiles: [verify]
+
+volumes:
+  radarr-config:
+  sonarr-config:

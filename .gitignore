@@ -1,0 +1,14 @@
+node_modules/
+dist/
+*.tsbuildinfo
+/data/
+.env*
+!.env.example
+coverage/
+.worktrees/
+# never commit a database, its WAL sidecars, or a torrent: this tree must contain none
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.torrent

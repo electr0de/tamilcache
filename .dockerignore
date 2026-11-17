@@ -1,0 +1,15 @@
+node_modules
+**/node_modules
+dist
+**/dist
+.git
+.github
+data
+.env*
+coverage
+*.tsbuildinfo
+# Tests and fixtures are not part of the runtime image; keeping them out means the published
+# artifact cannot contain even the sanitized captures.
+**/test
+# Docs never ship.
+docs

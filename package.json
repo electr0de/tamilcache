@@ -1,0 +1,36 @@
+{
+  "name": "tamilcache",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "vitest run",
+    "dev:api": "pnpm --filter @tamilcache/api dev",
+    "dev:worker": "pnpm --filter @tamilcache/worker dev",
+    "dev:web": "pnpm --filter @tamilcache/web dev",
+    "verify": "pnpm --filter @tamilcache/api verify",
+    "replay": "pnpm --filter @tamilcache/worker replay",
+    "fixture:capture": "pnpm --filter @tamilcache/shared fixture:capture",
+    "db:reset": "node scripts/reset-db.mjs",
+    "sanitize:fixtures": "node scripts/sanitize-fixtures.mjs",
+    "check:leaks": "node scripts/check-leaks.mjs",
+    "coverage:audit": "pnpm --filter @tamilcache/worker coverage:audit",
+    "reclassify": "pnpm --filter @tamilcache/worker reclassify"
+  },
+  "devDependencies": {
+    "typescript": "5.7.3",
+    "vitest": "2.1.8",
+    "@types/node": "22.10.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "esbuild"
+    ]
+  }
+}

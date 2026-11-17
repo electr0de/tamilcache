@@ -1,0 +1,115 @@
+# TamilCache — one command:  docker compose up -d
+#
+# Nothing here needs a .env. Every value has a default, and Compose reads .env automatically for
+# ${VAR} substitution if you create one (copy .env.example to .env).
+#
+# DATA lives in ${TAMILCACHE_DATA}, default ./data — beside this file, so the database, the
+# uploaded .torrent files and the backups are one directory to back up.
+#   Unraid: /mnt/user/appdata/compose.manager/projects/tamilcache/data
+#   Anywhere: set TAMILCACHE_DATA=/abs/path
+#
+# THAT DIRECTORY MUST BE ON A LOCAL DISK. SQLite runs in WAL mode; WAL on a file-sync service
+# (Seafile, Dropbox, OneDrive, NFS) or on an Unraid shfs volume that moves files between array
+# disks corrupts the database. On Unraid set the appdata share to "Cache: Only".
+services:
+  api:
+    image: ${TAMILCACHE_IMAGE:-ghcr.io/electr0de/tamilcache:latest}
+    environment:
+      DB_PATH: /data/tamilcache.db
+      DATA_DIR: /data
+      # A published port means the browser's peer is the bridge address, so bootstrap validates
+      # headers a browser cannot forge instead of the peer IP.
+      HOST: 0.0.0.0
+      PORT: "8484"
+      # DELTA_CRON is a local-time spec; without TZ a container runs in UTC.
+      TZ: ${TZ:-UTC}
+      PUID: ${PUID:-99}
+      PGID: ${PGID:-100}
+      UMASK: ${UMASK:-002}
+      ALLOW_BOOTSTRAP: ${ALLOW_BOOTSTRAP:-loopback}
+      TMDB_API_KEY: ${TMDB_API_KEY:-}
+      OMDB_API_KEY: ${OMDB_API_KEY:-}
+      TVDB_API_KEY: ${TVDB_API_KEY:-}
+      TVDB_PIN: ${TVDB_PIN:-}
+      TORZNAB_API_KEY: ${TORZNAB_API_KEY:-}
+      CRAWL_DELAY_MS: ${CRAWL_DELAY_MS:-2000}
+      CRAWL_CONCURRENCY: ${CRAWL_CONCURRENCY:-1}
+      DELTA_CRON: ${DELTA_CRON:-0 3 * * *}
+      BEST_VARIANT_ONLY: ${BEST_VARIANT_ONLY:-false}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      LOG_KEEP_DAYS: ${LOG_KEEP_DAYS:-14}
+      MIRRORS: ${MIRRORS:-www.1tamilmv.io,www.1tamilmv.style,www.1tamilmv.fi,1tamilmv.meme,1tamilmv.observer}
+    ports:
+      # The container always listens on 8484; this only moves the host side.
+      - "${TAMILCACHE_PORT:-8484}:8484"
+    volumes:
+      - type: bind
+        source: ${TAMILCACHE_DATA:-./data}
+        target: /data
+    healthcheck:
+      # /api/v1/health is key-guarded by design, so probe the SPA root: a 200 there proves the
+      # process got past openDb() → migrate() → listen(). `node` is in the image; curl is not.
+      test:
+        ["CMD", "node", "-e", "fetch('http://127.0.0.1:8484/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    logging:
+      driver: json-file
+      options: { max-size: "10m", max-file: "3" }
+    restart: unless-stopped
+
+  worker:
+    image: ${TAMILCACHE_IMAGE:-ghcr.io/electr0de/tamilcache:latest}
+    # `dist/main.js` is the program; `dist/index.js` is the package barrel and exits immediately.
+    command: ["node", "apps/worker/dist/main.js"]
+    environment:
+      DB_PATH: /data/tamilcache.db
+      DATA_DIR: /data
+      TZ: ${TZ:-UTC}
+      PUID: ${PUID:-99}
+      PGID: ${PGID:-100}
+      UMASK: ${UMASK:-002}
+      TMDB_API_KEY: ${TMDB_API_KEY:-}
+      OMDB_API_KEY: ${OMDB_API_KEY:-}
+      TVDB_API_KEY: ${TVDB_API_KEY:-}
+      TVDB_PIN: ${TVDB_PIN:-}
+      CRAWL_DELAY_MS: ${CRAWL_DELAY_MS:-2000}
+      CRAWL_CONCURRENCY: ${CRAWL_CONCURRENCY:-1}
+      DELTA_CRON: ${DELTA_CRON:-0 3 * * *}
+      BACKFILL_ENABLED: ${BACKFILL_ENABLED:-false}
+      SEASON_PACK_EXPANSION: ${SEASON_PACK_EXPANSION:-false}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      LOG_KEEP_DAYS: ${LOG_KEEP_DAYS:-14}
+      MIRRORS: ${MIRRORS:-www.1tamilmv.io,www.1tamilmv.style,www.1tamilmv.fi,1tamilmv.meme,1tamilmv.observer}
+    volumes:
+      - type: bind
+        source: ${TAMILCACHE_DATA:-./data}
+        target: /data
+    depends_on:
+      api:
+        condition: service_healthy
+    logging:
+      driver: json-file
+      options: { max-size: "10m", max-file: "3" }
+    restart: unless-stopped
+
+  # Backup and restore. Never started by `up` — the `tools` profile is opt-in:
+  #
+  #   docker compose run --rm --no-deps snapshot export
+  #   docker compose run --rm --no-deps snapshot import <path-or-url> [--force]
+  #
+  # This one keeps `docker run`'s default root user on purpose: it may need to take ownership of
+  # a /data volume that a previous container created as root. `up` re-chowns it afterwards.
+  snapshot:
+    image: ${TAMILCACHE_IMAGE:-ghcr.io/electr0de/tamilcache:latest}
+    profiles: [tools]
+    entrypoint: ["node", "apps/api/dist/snapshot.js"]
+    environment:
+      DB_PATH: /data/tamilcache.db
+      DATA_DIR: /data
+    volumes:
+      - type: bind
+        source: ${TAMILCACHE_DATA:-./data}
+        target: /data

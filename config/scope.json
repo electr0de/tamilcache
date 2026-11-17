@@ -1,0 +1,484 @@
+{
+  "boards": [
+    {
+      "id": 9,
+      "include": false,
+      "reason": "Tamil hub: grouping only, its children carry the topics"
+    },
+    {
+      "id": 22,
+      "include": false,
+      "reason": "Telugu hub: grouping only"
+    },
+    {
+      "id": 34,
+      "include": false,
+      "reason": "Malayalam hub: grouping only"
+    },
+    {
+      "id": 45,
+      "include": false,
+      "reason": "English hub: grouping only"
+    },
+    {
+      "id": 56,
+      "include": false,
+      "reason": "Hindi hub: grouping only"
+    },
+    {
+      "id": 67,
+      "include": false,
+      "reason": "Kannada hub: grouping only"
+    },
+    {
+      "id": 10,
+      "include": true,
+      "reason": "Tamil PreDVD / DVDScr / CAM / TC"
+    },
+    {
+      "id": 11,
+      "include": true,
+      "reason": "Tamil WEB-HD / iTunes-HD / BluRay"
+    },
+    {
+      "id": 12,
+      "include": true,
+      "reason": "Tamil HD-Rips / DVD-Rips / BR-Rips"
+    },
+    {
+      "id": 13,
+      "include": true,
+      "reason": "Tamil DVD9 / DVD5"
+    },
+    {
+      "id": 14,
+      "include": true,
+      "reason": "Tamil HDTV / SDTV / HDTV-Rips"
+    },
+    {
+      "id": 15,
+      "include": false,
+      "reason": "MP3 songs"
+    },
+    {
+      "id": 16,
+      "include": false,
+      "reason": "Video songs"
+    },
+    {
+      "id": 17,
+      "include": true,
+      "reason": "Hollywood movies in multi audio"
+    },
+    {
+      "id": 18,
+      "include": false,
+      "reason": "Cinema news / reviews / general videos"
+    },
+    {
+      "id": 19,
+      "include": true,
+      "reason": "Tamil web-series / TV shows"
+    },
+    {
+      "id": 23,
+      "include": true,
+      "reason": "Telugu PreDVD / DVDScr / CAM / TC"
+    },
+    {
+      "id": 24,
+      "include": true,
+      "reason": "Telugu WEB-HD / iTunes-HD / BluRay"
+    },
+    {
+      "id": 25,
+      "include": true,
+      "reason": "Telugu HD-Rips / DVD-Rips / BR-Rips"
+    },
+    {
+      "id": 26,
+      "include": true,
+      "reason": "Telugu DVD9 / DVD5"
+    },
+    {
+      "id": 27,
+      "include": true,
+      "reason": "Telugu HDTV / SDTV / HDTV-Rips"
+    },
+    {
+      "id": 28,
+      "include": false,
+      "reason": "MP3 songs"
+    },
+    {
+      "id": 30,
+      "include": false,
+      "reason": "Video songs"
+    },
+    {
+      "id": 31,
+      "include": true,
+      "reason": "Telugu dubbed movies"
+    },
+    {
+      "id": 32,
+      "include": false,
+      "reason": "Cinema news / reviews / general videos"
+    },
+    {
+      "id": 33,
+      "include": true,
+      "reason": "Telugu web-series / TV shows"
+    },
+    {
+      "id": 35,
+      "include": true,
+      "reason": "Malayalam PreDVD / DVDScr / CAM / TC"
+    },
+    {
+      "id": 36,
+      "include": true,
+      "reason": "Malayalam WEB-HD / iTunes-HD / BluRay"
+    },
+    {
+      "id": 37,
+      "include": true,
+      "reason": "Malayalam HD-Rips / DVD-Rips / BR-Rips"
+    },
+    {
+      "id": 38,
+      "include": true,
+      "reason": "Malayalam DVD9 / DVD5"
+    },
+    {
+      "id": 39,
+      "include": true,
+      "reason": "Malayalam HDTV / SDTV / HDTV-Rips"
+    },
+    {
+      "id": 40,
+      "include": false,
+      "reason": "MP3 songs"
+    },
+    {
+      "id": 41,
+      "include": false,
+      "reason": "Video songs"
+    },
+    {
+      "id": 42,
+      "include": true,
+      "reason": "Malayalam dubbed / subtitled movies"
+    },
+    {
+      "id": 43,
+      "include": false,
+      "reason": "Cinema news / reviews / general videos"
+    },
+    {
+      "id": 44,
+      "include": true,
+      "reason": "Malayalam web-series / TV shows"
+    },
+    {
+      "id": 46,
+      "include": true,
+      "reason": "English PreDVD / DVDScr / CAM / TC"
+    },
+    {
+      "id": 49,
+      "include": true,
+      "reason": "English WEB-HD / iTunes-HD / BluRay"
+    },
+    {
+      "id": 50,
+      "include": true,
+      "reason": "English HD-Rips / DVD-Rips / BR-Rips"
+    },
+    {
+      "id": 51,
+      "include": false,
+      "reason": "MP3 songs"
+    },
+    {
+      "id": 52,
+      "include": false,
+      "reason": "Video songs"
+    },
+    {
+      "id": 54,
+      "include": false,
+      "reason": "Cinema news / reviews / general videos"
+    },
+    {
+      "id": 55,
+      "include": true,
+      "reason": "English web-series / TV shows"
+    },
+    {
+      "id": 57,
+      "include": true,
+      "reason": "Hindi PreDVD / DVDScr / CAM / TC"
+    },
+    {
+      "id": 58,
+      "include": true,
+      "reason": "Hindi WEB-HD / iTunes-HD / BluRay"
+    },
+    {
+      "id": 59,
+      "include": true,
+      "reason": "Hindi HD-Rips / DVD-Rips / BR-Rips"
+    },
+    {
+      "id": 60,
+      "include": true,
+      "reason": "Hindi DVD9 / DVD5"
+    },
+    {
+      "id": 61,
+      "include": true,
+      "reason": "Hindi HDTV / SDTV / HDTV-Rips"
+    },
+    {
+      "id": 62,
+      "include": false,
+      "reason": "MP3 songs"
+    },
+    {
+      "id": 63,
+      "include": false,
+      "reason": "Video songs"
+    },
+    {
+      "id": 64,
+      "include": true,
+      "reason": "Hindi dubbed movies"
+    },
+    {
+      "id": 65,
+      "include": false,
+      "reason": "Cinema news / reviews / general videos"
+    },
+    {
+      "id": 66,
+      "include": true,
+      "reason": "Hindi web-series / TV shows"
+    },
+    {
+      "id": 68,
+      "include": true,
+      "reason": "Kannada PreDVD / DVDScr / CAM / TC"
+    },
+    {
+      "id": 69,
+      "include": true,
+      "reason": "Kannada WEB-HD / iTunes-HD / BluRay"
+    },
+    {
+      "id": 70,
+      "include": true,
+      "reason": "Kannada HD-Rips / DVD-Rips / BR-Rips"
+    },
+    {
+      "id": 71,
+      "include": true,
+      "reason": "Kannada DVD9 / DVD5"
+    },
+    {
+      "id": 72,
+      "include": true,
+      "reason": "Kannada HDTV / SDTV / HDTV-Rips"
+    },
+    {
+      "id": 73,
+      "include": false,
+      "reason": "MP3 songs"
+    },
+    {
+      "id": 74,
+      "include": false,
+      "reason": "Video songs"
+    },
+    {
+      "id": 75,
+      "include": true,
+      "reason": "Watch Kannada movies online"
+    },
+    {
+      "id": 76,
+      "include": false,
+      "reason": "Cinema news / reviews / general videos"
+    },
+    {
+      "id": 77,
+      "include": true,
+      "reason": "Kannada web-series / TV shows"
+    },
+    {
+      "id": 95,
+      "include": true,
+      "reason": "Watch Telugu movies online"
+    },
+    {
+      "id": 102,
+      "include": true,
+      "reason": "Watch Tamil movies online"
+    },
+    {
+      "id": 103,
+      "include": true,
+      "reason": "Watch Hindi movies online"
+    },
+    {
+      "id": 104,
+      "include": true,
+      "reason": "Watch Malayalam movies online"
+    },
+    {
+      "id": 106,
+      "include": true,
+      "reason": "WWE RAW (TV)"
+    },
+    {
+      "id": 108,
+      "include": true,
+      "reason": "WWE SmackDown Live (TV)"
+    },
+    {
+      "id": 109,
+      "include": true,
+      "reason": "WWE PPV events (TV)"
+    },
+    {
+      "id": 105,
+      "include": false,
+      "reason": "WWE hub: grouping only"
+    },
+    {
+      "id": 92,
+      "include": false,
+      "reason": "Post & Share Here: member uploads, 722 pages - trial before including"
+    },
+    {
+      "id": 1,
+      "include": false,
+      "reason": "General: site administration"
+    },
+    {
+      "id": 2,
+      "include": false,
+      "reason": "General: introductions"
+    },
+    {
+      "id": 3,
+      "include": false,
+      "reason": "General: site rules / announcements"
+    },
+    {
+      "id": 4,
+      "include": false,
+      "reason": "General: tutorials"
+    },
+    {
+      "id": 5,
+      "include": false,
+      "reason": "General: suggestions / feedback"
+    },
+    {
+      "id": 6,
+      "include": false,
+      "reason": "General: complaints / bugs"
+    },
+    {
+      "id": 7,
+      "include": false,
+      "reason": "General: donations"
+    },
+    {
+      "id": 8,
+      "include": false,
+      "reason": "General: other"
+    },
+    {
+      "id": 78,
+      "include": false,
+      "reason": "Live TV hub"
+    },
+    {
+      "id": 79,
+      "include": false,
+      "reason": "Live TV: Tamil"
+    },
+    {
+      "id": 80,
+      "include": false,
+      "reason": "Live TV: Telugu"
+    },
+    {
+      "id": 81,
+      "include": false,
+      "reason": "Live TV: Hindi"
+    },
+    {
+      "id": 82,
+      "include": false,
+      "reason": "Live TV: Malayalam"
+    },
+    {
+      "id": 83,
+      "include": false,
+      "reason": "Live TV: Kannada"
+    },
+    {
+      "id": 84,
+      "include": false,
+      "reason": "Live TV: sports"
+    },
+    {
+      "id": 85,
+      "include": false,
+      "reason": "Members lounge: softwares / games"
+    },
+    {
+      "id": 89,
+      "include": false,
+      "reason": "Members lounge: request section"
+    },
+    {
+      "id": 90,
+      "include": false,
+      "reason": "Members lounge: multimedia GFX / VFX"
+    },
+    {
+      "id": 91,
+      "include": false,
+      "reason": "Members lounge: e-books / education"
+    },
+    {
+      "id": 93,
+      "include": false,
+      "reason": "Members lounge hub"
+    },
+    {
+      "id": 86,
+      "include": false,
+      "reason": "Members lounge: PC"
+    },
+    {
+      "id": 87,
+      "include": false,
+      "reason": "Members lounge: Android"
+    },
+    {
+      "id": 88,
+      "include": false,
+      "reason": "Members lounge: iOS"
+    },
+    {
+      "id": 94,
+      "include": false,
+      "reason": "General: solved"
+    }
+  ]
+}
